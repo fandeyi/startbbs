@@ -1,0 +1,41 @@
+from selenium import webdriver
+from time import sleep
+driver = webdriver.Chrome()
+driver.get("http://localhost/startbbs/index.php")
+
+element_login = driver.find_element_by_xpath("//ul[@class='nav navbar-nav navbar-right']//a[contains(text(),'登入')]")
+element_login.click()
+sleep(3)
+element_login_name = driver.find_element_by_xpath("//input[@id='user_nickname']")
+
+element_login_name.send_keys("test1")
+element_login_password = driver.find_element_by_xpath("//input[@id='user_password']")
+
+element_login_password.send_keys("123456")
+element_login_commit = driver.find_element_by_xpath("//button[@name='commit']")
+element_login_commit.click()
+sleep(3)
+element_post = driver.find_element_by_xpath("//a[contains(text(),'发表')]")
+element_post.click()
+sleep(5)
+element_title = driver.find_element_by_xpath("//input[@id='topic_title']")
+
+element_title.send_keys("title123123")
+element_node = driver.find_element_by_xpath("//select[@id='node_id']")
+element_node.click()
+sleep(3)
+element_option = driver.find_element_by_xpath("//option[contains(text(),'c++')]")
+element_option.click()
+element_content = driver.find_element_by_xpath("//textarea[@id='post_content']")
+element_content.send_keys("content1234567895225852248524522")
+element_submit = driver.find_element_by_xpath("//button[@class='btn btn-primary']")
+element_submit.click()
+
+sleep(5)
+element_loginout = driver.find_element_by_xpath("//a[@class='dropdown-toggle']")
+element_loginout.click()
+sleep(3)
+element_loginout_sure = driver.find_element_by_xpath("//a[contains(text(),'退出')]")
+element_loginout_sure.click()
+sleep(2)
+driver.quit()
